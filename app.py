@@ -62,9 +62,9 @@ st.set_page_config(page_title="Reverb Manager", layout="wide")
 
 # 1. API Token Check
 if "token" not in st.session_state:
-    st.title("🔑 Reverb Login")
-    token_input = st.text_input("Enter Reverb API Token:", type="password")
-    if st.button("Connect"):
+    st.title("🔑")
+    token_input = st.text_input("🔑:", type="password")
+    if st.button("🔑"):
         if token_input:
             st.session_state.token = token_input
             st.rerun()
@@ -76,23 +76,23 @@ api = ReverbManager(st.session_state.token)
 # 2. GLOBAL REFRESH BUTTON (Always at the top)
 col_title, col_refresh = st.columns([0.85, 0.15])
 with col_title:
-    st.title("🎸 Reverb Listing Manager")
+    st.title("🎸")
 with col_refresh:
-    if st.button("🔄 Refresh Data", use_container_width=True):
+    if st.button("🔄", use_container_width=True):
         st.rerun()
 
 st.divider()
 
 # 3. TABS (Removed History Tab)
-tab1, tab2 = st.tabs(["🆕 Create Drafts", "📋 Manage Drafts"])
+tab1, tab2 = st.tabs(["🆕", "📋"])
 
 # --- TAB 1: CLONING ---
 with tab1:
-    st.header("Bulk Clone at 50% Off")
+    st.header("Bulk Clone at 60% Off")
     urls_input = st.text_area("Paste URLs (one per line or comma-separated)", height=150)
     ship_id = st.text_input("Shipping Profile ID")
     
-    if st.button("🚀 Generate Drafts"):
+    if st.button("🚀"):
         if not urls_input or not ship_id:
             st.warning("Please provide both URLs and a Shipping Profile ID.")
         else:
